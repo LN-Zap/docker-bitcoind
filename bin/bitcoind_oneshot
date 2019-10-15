@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+# Generate bitcoin.conf
+bitcoind_init
+
+# Add rpc credentials if non empty.
+if [ -n "${RPCUSER}" ]; then
+   PARAMS="$PARAMS --rpcuser=${RPCUSER}"
+fi
+if [ -n "${RPCPASSWORD}" ]; then
+   PARAMS="$PARAMS --rpcpassword=${RPCPASSWORD}"
+fi
+
+# Add user parameters to command.
+PARAMS="$PARAMS $@"
+
+# Print command and start bitcoin node.
+echo "Command: bitcoind $PARAMS"
+exec bitcoind $PARAMS
