@@ -10,7 +10,7 @@ ENV DOWNLOAD_URL https://bitcoincore.org/bin/bitcoin-core-${VERSION}/${FILENAME}
 # Install bitcoind
 RUN apk update \
   && apk add --no-cache --virtual=.build-dependencies tar wget ca-certificates \
-  && apk --no-cache add bash su-exec \
+  && apk --no-cache add bash su-exec tzdata \
   && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
   && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk \
   && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-bin-${GLIBC_VERSION}.apk \
