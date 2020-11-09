@@ -1,4 +1,4 @@
-FROM alpine:3.10 as final
+FROM alpine:3.12 as final
 MAINTAINER Tom Kirkpatrick <tkp@kirkdesigns.co.uk>
 
 ARG VERSION=0.20.1
