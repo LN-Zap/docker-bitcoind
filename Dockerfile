@@ -1,7 +1,7 @@
 FROM alpine:3.12 as final
 MAINTAINER Tom Kirkpatrick <tkp@kirkdesigns.co.uk>
 
-ARG VERSION=0.20.1
+ARG VERSION=0.21.0
 ARG GLIBC_VERSION=2.29-r0
 
 ENV FILENAME bitcoin-${VERSION}-x86_64-linux-gnu.tar.gz
