@@ -24,8 +24,7 @@ jobs:
 
       # builds the regular image
       - name: Build image
-        run: |
-          docker build -t ${{ env.IMAGE_NAME }}:${{ env.VERSION }} --build-arg VERSION=${{ env.VERSION }} .
+        run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.VERSION }} --build-arg VERSION=${{ env.VERSION }} .
 
       # Version test for the previously built image
       - name: Image version Test
