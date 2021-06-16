@@ -45,12 +45,3 @@ jobs:
       #- name: Push image to Dockerhub
       #  run: |
       #    docker push ${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
-
-            # the output of the previous command will be parsed and used as the the git tag and
-      # the release will be created automatically
-      - uses: alice-biometrics/release-creator/@v1.0.5
-        name: Creating release
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          version: ${{ env.RELEASE_TAG }}
-          description: '[Bitcoin Core](https://github.com/bitcoin/bitcoin) images are publicly available from dockerhub\n\n## Dockerhub Tags:\n- `${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}`'
