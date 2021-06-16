@@ -24,7 +24,9 @@ jobs:
 
       # builds the regular image
       - name: Build image
-        run: docker build -t ${{ env.IMAGE_NAME }}:${{ env.VERSION }} --build-arg VERSION=${{ env.VERSION }} .
+        run: | 
+          docker build -t ${{ env.IMAGE_NAME }}:${{ env.VERSION }} --build-arg VERSION=${{ env.VERSION }} .
+          docker image tag ${{ env.IMAGE_NAME }}:${{ env.VERSION }} ${{ env.IMAGE_NAME }}:latest 
 
       # Version test for the previously built image
       - name: Image version Test
@@ -42,4 +44,6 @@ jobs:
       
       # Push both images to Dockerhub
       - name: Push image to Dockerhub
-        run: docker push ${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
+        run: |
+          docker push ${{ env.IMAGE_NAME }}:${{ env.RELEASE_TAG }}
+          docker push ${{ env.IMAGE_NAME }}:latest
